@@ -19,6 +19,11 @@ input.onGesture(Gesture.Shake, function () {
 
 radio.onReceivedNumber(function (receivedNumber: number) {
     if (receivedNumber > 0) {
+        const angle = 165 - receivedNumber * 15
+        pins.servoWritePin(AnalogPin.P0, angle)
         basic.showNumber(receivedNumber)
+    } else {
+        basic.clearScreen()
+        pins.servoWritePin(AnalogPin.P0, 175)
     }
 })
